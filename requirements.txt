@@ -1,0 +1,9 @@
+chromadb
+dotenv
+langchain
+loguru
+numpy
+pypdf
+rich
+sentence_transformers
+transformers
