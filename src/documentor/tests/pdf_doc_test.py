@@ -1,11 +1,11 @@
-from documentor.docs.pdf_doc import PDFDocument
-from documentor.tests.utils import get_path, pretty_print
+from documentor.docs import PDFDocument
+from documentor.utils import get_internal_path, pretty_print
 
 def test_pdf_document() -> None:
     doc = PDFDocument(
-        fp=get_path('data/microsoft-annual-report.pdf')
+        fp=get_internal_path('tests/data/microsoft-annual-report.pdf')
     )
-    doc.cache_dir_path = get_path('cache')
+    doc.cache_dir_path = get_internal_path('tests/cache')
 
     doc.load(
         use_cache_if_exists=True,

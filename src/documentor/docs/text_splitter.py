@@ -83,7 +83,7 @@ class TextSplitter:
             tokens = []
 
             for chunk in self._document_data.character_chunks:
-                tokens.append(self._token_splitter.split_text(text=chunk))
+                tokens += self._token_splitter.split_text(text=chunk)
 
             self._document_data.token_chunks = tokens
 
@@ -91,7 +91,7 @@ class TextSplitter:
             ids = []
 
             for i in range(1, len(self._document_data.token_chunks) + 1):
-                ids.append(f"{self._document_data.file_name}-token-{i}")
+                ids += [f"{self._document_data.file_name}-token-{i}"]
                 
             self._document_data.token_ids = ids
 

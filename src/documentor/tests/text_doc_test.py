@@ -1,11 +1,11 @@
-from documentor.docs.text_doc import TextDocument
-from documentor.tests.utils import get_path, pretty_print
+from documentor.docs import TextDocument
+from documentor.utils import get_internal_path, pretty_print
 
 def test_text_document() -> None:
     doc = TextDocument(
-        fp=get_path('data/attention-is-all-you-need-paper.txt')
+        fp=get_internal_path('tests/data/attention-is-all-you-need-paper.txt')
     )
-    doc.cache_dir_path = get_path('cache')
+    doc.cache_dir_path = get_internal_path('tests/cache')
 
     doc.load(
         use_cache_if_exists=True,

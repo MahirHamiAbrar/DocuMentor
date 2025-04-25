@@ -7,6 +7,8 @@ from .document import Document
 from .pdf_doc import PDFDocument
 from .text_doc import TextDocument
 
+from ..db import VectorDataBaseManager
+
 
 class DocumentManager:
 

@@ -10,3 +10,4 @@ wheels/
 .venv
 
 **/tests/cache/
+**/tests/chromadb/

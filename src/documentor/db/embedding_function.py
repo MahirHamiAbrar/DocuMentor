@@ -4,7 +4,7 @@ from chromadb import (
     Embeddings,
     EmbeddingFunction
 )
-from typing import List
+from typing import Any, List
 from numpy.linalg import norm
 from sentence_transformers import SentenceTransformer
 
@@ -46,3 +46,6 @@ class CustomEmbeddingFunction(EmbeddingFunction[Documents]):
             
     def embed_query(self, query: str) -> List[float]:
         return self.model.encode([query]).tolist()
+    
+    def encode(self, text) -> Any:
+        return self.model.encode(text)
