@@ -9,8 +9,7 @@ from .text_splitter import TextSplitter
 
 
 class Document(ABC, DocumentData, TextSplitter):
-    def __init__(
-        self, 
+    def __init__(self, 
         fp: str, 
         cache_dir_path: str | None = None,
 

@@ -23,9 +23,7 @@ class TextSplitter:
     STTTS_TOKENS_PER_CHUNK: int = 256
     STTTS_LENGTH_FUNCTION: Callable = len
 
-    def __init__(
-        self,
-
+    def __init__(self,
         document_data: DocumentData,
 
         # parameters for 'RecorsiveChartacterTextSplitter' aka 'RCTS'
