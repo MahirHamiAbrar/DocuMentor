@@ -1,9 +1,9 @@
-from documentor.docs.pdf_doc import PDFDocument
+from documentor.docs.text_doc import TextDocument
 from documentor.tests.utils import get_path, pretty_print
 
-def test_pdf_document() -> None:
-    doc = PDFDocument(
-        fp=get_path('data/microsoft-annual-report.pdf')
+def test_text_document() -> None:
+    doc = TextDocument(
+        fp=get_path('data/attention-is-all-you-need-paper.txt')
     )
     doc.cache_dir_path = get_path('cache')
 

@@ -43,7 +43,7 @@ class DocumentData:
 
     @property
     def file_path(self) -> str:
-        return self.file_path
+        return self._file_path
     
     @file_path.setter
     def file_path(self, fp: str) -> None:
