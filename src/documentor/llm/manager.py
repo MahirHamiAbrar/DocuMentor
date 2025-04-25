@@ -72,6 +72,27 @@ class LLMManager:
 
         return response.choices[0].message.content
     
+    def generate_response_from_history(self,
+        history: List[dict[str, str]],
+        user_query: str
+    ) -> None:
+        
+        history.append({
+            'role': 'user', 'content': user_query
+        })
+        
+        response = self._client.chat.completions.create(
+            model = self._model_name,
+            messages = history
+        )
+        reply_content = response.choices[0].message.content
+
+        history.append({
+            'role': 'assistant', 'content': reply_content
+        })
+
+        return reply_content
+    
     def generate_multi_query(self,
         query: str
     ) -> List[str]:
