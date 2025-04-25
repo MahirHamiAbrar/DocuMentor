@@ -61,8 +61,7 @@ class VectorDataBaseManager:
         except Exception as e:
             logger.error(e)
 
-    def retrieve_documents(
-        self,
+    def retrieve_documents(self,
         query_texts: List[str],
         n_results: int = 5,
         include: List[str] = ['documents', 'embeddings', 'metadatas']

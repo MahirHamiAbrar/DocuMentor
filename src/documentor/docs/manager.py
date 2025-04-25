@@ -17,6 +17,12 @@ class DocumentManager:
     def __init__(self, cache_dir: str | None = None) -> None:
         self._cache_dir: str = cache_dir
         self._documents: List[Document] = []
+    
+    def documents(self) -> List[Document]:
+        return self._documents
+    
+    def document_count(self) -> int:
+        return len(self._documents)
 
     def add_file(self, fp: str) -> int:
         filetype = os.path.splitext(fp)[0][1:]
