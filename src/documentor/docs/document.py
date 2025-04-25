@@ -1,15 +1,42 @@
 import os
 import json
+
+from typing import List, Callable
 from abc import ABC, abstractmethod
+
 from .data import DocumentData
+from .text_splitter import TextSplitter
 
 
-class Document(DocumentData, ABC):
-    def __init__(self, 
+class Document(ABC, DocumentData, TextSplitter):
+    def __init__(
+        self, 
         fp: str, 
         cache_dir_path: str | None = None,
+
+        # parameters for 'RecorsiveChartacterTextSplitter' aka 'RCTS'
+        rcts_separators: List[str] | None = None,
+        rcts_chunk_size: int | None = None,
+        rcts_chunk_overlap: int | None = None,
+        rcts_length_function: Callable | None = None,
+
+        # parameters for 'SentenceTransformersTokenTextSplitter' aka 'STTTS'
+        sttts_chunk_overlap: int | None = None,
+        sttts_tokens_per_chunk: int | None = None,
+        sttts_length_function: Callable | None = None
     ) -> None:
         DocumentData.__init__(self)
+        TextSplitter.__init__(
+            self, 
+            document_data=self,
+            rcts_separators=rcts_separators,
+            rcts_chunk_size=rcts_chunk_size,
+            rcts_chunk_overlap=rcts_chunk_overlap,
+            rcts_length_function=rcts_length_function,
+            sttts_chunk_overlap=sttts_chunk_overlap,
+            sttts_tokens_per_chunk=sttts_tokens_per_chunk,
+            sttts_length_function=sttts_length_function
+        )
 
         # set cache directory path if provided
         if cache_dir_path:
@@ -77,6 +104,10 @@ class Document(DocumentData, ABC):
     
     @abstractmethod
     def load_contents(self) -> None:
+        """This class must be implemented in the child class,
+        otherwise the `load()` method will raise error in absence of cache file or
+        if `use_cache_if_exists` is set to `False`.
+        """
         pass
 
     def load(self, 
@@ -100,6 +131,12 @@ class Document(DocumentData, ABC):
         if not document_loaded:
             # *** LOAD EVERYTHING MANUALLY ***
             self.load_contents()
+
+            # now split characters into chunks
+            self.split_characters_into_chunks()
+
+            # split chunks into tokens and generate token ids
+            self.split_chunks_into_tokens()
             
             # save cache if permitted
             if create_cache_if_not_exists:

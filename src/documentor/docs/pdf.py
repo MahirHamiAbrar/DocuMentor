@@ -18,4 +18,4 @@ class PDFDocument(Document):
         for page in reader.pages:
             texts.append(page.extract_text().strip())
         
-        self.contents = texts.copy()
+        self.contents = texts

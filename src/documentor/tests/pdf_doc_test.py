@@ -1,5 +1,5 @@
-from documentor.tests.utils import get_path
 from documentor.docs.pdf import PDFDocument
+from documentor.tests.utils import get_path, pretty_print
 
 def test_pdf_document() -> None:
     doc = PDFDocument(
@@ -12,6 +12,10 @@ def test_pdf_document() -> None:
         create_cache_if_not_exists=True
     )
 
-    print(doc.metadata())
-    print(doc.cache_metadata())
-    print(len(doc.contents))
+    pretty_print(doc.metadata())
+    pretty_print(doc.cache_metadata())
+    print(
+        f" {len(doc.contents) = }\n",
+        f"{len(doc.token_chunks) = }\n",
+        f"{len(doc.token_ids) = }"
+    )
