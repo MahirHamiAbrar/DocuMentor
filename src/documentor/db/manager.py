@@ -30,7 +30,7 @@ class VectorDataBaseManager:
 
         # chromadb collection
         self._chroma_collection: chromadb.Collection | None = None
-
+    
     def load_embedding_model(self) -> None:
         self._embedding_func = SentenceTransformerEmbeddingFunction(
             model_name='jinaai/jina-embeddings-v2-base-en'

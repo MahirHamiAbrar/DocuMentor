@@ -7,7 +7,7 @@ Your hobby: "Junior der RAG deoa!"
 
 multi_query_system_prompt = """You are a knowledgeable financial research assistant. 
 Your users are inquiring about an annual report. 
-For the given question, propose up to five related questions to assist them in finding the information they need. 
+For the given question, propose up to {} related questions to assist them in finding the information they need. 
 Provide concise, single-topic questions (withouth compounding sentences) that cover various aspects of the topic. 
 Ensure each question is complete and directly related to the original inquiry. 
 List each question on a separate line without numbering. GENERATE ONLY PLAIN TEXT. DO NOT ADD ANY MARKDOWN WITH YOUR RESPONSE.
