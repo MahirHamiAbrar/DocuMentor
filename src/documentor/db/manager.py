@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Sequence
 from loguru import logger
 
 import chromadb
@@ -11,12 +11,14 @@ from ..utils import get_internal_path
 class VectorDataBaseManager:
 
     def __init__(self, 
-        collection_name: str,
-        save_location: str = 'tests/chromadb'
+        save_location: str | None = None
     ) -> None:
 
-        self._collection_name = collection_name
-        self._db_save_location = get_internal_path(save_location)
+        self._db_save_location = (
+            save_location
+            if save_location
+            else get_internal_path('tests/chromadb')
+        )
 
         # custom embedding function, loads embedding model locally
         # recommended to use a 'CUDA' enabled GPU.
@@ -32,11 +34,26 @@ class VectorDataBaseManager:
         self._chroma_collection: chromadb.Collection | None = None
     
     def load_embedding_model(self) -> None:
+        logger.info('loading embedding model...')
         self._embedding_func = SentenceTransformerEmbeddingFunction(
             model_name='jinaai/jina-embeddings-v2-base-en'
         )
     
-    def create_chromadb_collection(self, document: Document) -> None:
+    def get_collections(self) -> Sequence[chromadb.Collection]:
+        return self._chromadb_client.list_collections()
+    
+    def collection_exists(self, collection_name: str) -> bool:
+        return collection_name in [
+            collection.name for collection in self.get_collections()
+        ]
+    
+    def load_existing_collection(self, collection_name: str) -> None:
+        self._chroma_collection = self._chromadb_client.get_collection(
+            name=collection_name,
+            embedding_function=self._embedding_func
+        )
+    
+    def create_chromadb_collection_from_document(self, document: Document, collection_name: str) -> None:
         try:
             logger.info('Creating ChromaDB Collection.')
             
@@ -45,7 +62,7 @@ class VectorDataBaseManager:
                 return
             
             self._chroma_collection = self._chromadb_client.get_or_create_collection(
-                name=self._collection_name,
+                name=collection_name,
                 embedding_function=self._embedding_func,
             )
 
@@ -57,6 +74,32 @@ class VectorDataBaseManager:
                 ids=document.token_ids,
                 metadatas=metadatas,
                 documents=document.token_chunks,
+            )
+        except Exception as e:
+            logger.error(e)
+    
+    def create_chromadb_collection_from_data(self, 
+        ids: List[str],
+        document_contents: List[str],
+        metadatas: List[str],
+        collection_name: str
+    ) -> None:
+        try:
+            logger.info('Creating ChromaDB Collection.')
+            
+            if not self._embedding_func:
+                logger.critical('Embedding function not loaded!')
+                return
+            
+            self._chroma_collection = self._chromadb_client.get_or_create_collection(
+                name=collection_name,
+                embedding_function=self._embedding_func,
+            )
+            
+            self._chroma_collection.add(
+                ids=ids,
+                metadatas=metadatas,
+                documents=document_contents,
             )
         except Exception as e:
             logger.error(e)

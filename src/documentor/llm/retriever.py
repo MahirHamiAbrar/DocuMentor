@@ -7,9 +7,9 @@ from ..db import VectorDataBaseManager
 
 
 class Retriever(GroqModel):
-    def __init__(self) -> None:
+    def __init__(self, vector_dbman: VectorDataBaseManager) -> None:
         GroqModel.__init__(self)
-        # VectorDataBaseManager.__init__(self, '')
+        self._vector_dbman = vector_dbman
     
     def create_user_message_for_multiquery(self,
         query_text: str,

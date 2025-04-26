@@ -6,4 +6,5 @@ def main() -> None:
     # test_text_document()
     # test_vectordb_manager()
     # test_groq_model()
-    test_retriever()
+    # test_retriever()
+    test_document_manager()
