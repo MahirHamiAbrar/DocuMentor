@@ -39,12 +39,12 @@ class VectorDataBaseManager:
             model_name='jinaai/jina-embeddings-v2-base-en'
         )
     
-    def get_collections(self) -> Sequence[chromadb.Collection]:
+    def list_collections(self) -> Sequence[chromadb.Collection]:
         return self._chromadb_client.list_collections()
     
     def collection_exists(self, collection_name: str) -> bool:
         return collection_name in [
-            collection.name for collection in self.get_collections()
+            collection.name for collection in self.list_collections()
         ]
     
     def load_existing_collection(self, collection_name: str) -> None:

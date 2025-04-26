@@ -12,7 +12,7 @@ def test_document_manager() -> None:
     # Text Document
     docman.add_file(get_internal_path('tests/data/attention-is-all-you-need-paper.txt'))
     
-    docman.load_all_documents(save_to_vector_store=False)
+    docman.load_all_documents()
 
     print(f"Total Documents: {docman.document_count()}")
 
