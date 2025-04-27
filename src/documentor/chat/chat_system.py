@@ -3,9 +3,10 @@ from loguru import logger
 
 from ..docs import DocumentManager
 from ..llm import Retriever, GroqModel
-from .chat_history import ChatHistoryManager
+# from .chat_history import ChatHistoryManager
 
 
+# class ChatSystem(DocumentManager, ChatHistoryManager):
 class ChatSystem(DocumentManager):
     def __init__(self,
         cache_dir: str | None = None,
@@ -16,6 +17,8 @@ class ChatSystem(DocumentManager):
             cache_dir=cache_dir,
             vector_store_save_location=vector_store_save_location
         )
+
+        # ChatHistoryManager.__init__(self)
 
         self._llm = GroqModel()
         self._retriever: Retriever = Retriever()

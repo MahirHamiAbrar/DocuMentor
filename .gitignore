@@ -16,3 +16,4 @@ wheels/
 output/
 **/tests/cache/
 **/tests/chromadb/
+**/tests/chat_history/

@@ -12,7 +12,7 @@ from .data import DocumentData
 
 class TextSplitter:
 
-    # 'RecorsiveChartacterTextSplitter' aka 'RCTS' default config
+    # 'RecursiveChartacterTextSplitter' aka 'RCTS' default config
     RCTS_SEPARATORS: List[str] = ['\n\n', '\n', '. ', ' ', '']
     RCTS_CHUNK_SIZE: int = 1024
     RCTS_CHUNK_OVERLAP: int = 128
@@ -26,7 +26,7 @@ class TextSplitter:
     def __init__(self,
         document_data: DocumentData,
 
-        # parameters for 'RecorsiveChartacterTextSplitter' aka 'RCTS'
+        # parameters for 'RecursiveChartacterTextSplitter' aka 'RCTS'
         rcts_separators: List[str] | None = None,
         rcts_chunk_size: int | None = None,
         rcts_chunk_overlap: int | None = None,

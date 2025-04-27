@@ -6,3 +6,4 @@ from .groq_model_test import test_groq_model
 from .retriever_test import test_retriever
 from .docman_test import test_document_manager
 from .chat_system_test import test_chat_system
+from .chat_history_test import test_chat_history

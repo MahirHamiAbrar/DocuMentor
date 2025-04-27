@@ -13,7 +13,7 @@ class Document(ABC, DocumentData, TextSplitter):
         fp: str, 
         cache_dir_path: str | None = None,
 
-        # parameters for 'RecorsiveChartacterTextSplitter' aka 'RCTS'
+        # parameters for 'RecursiveChartacterTextSplitter' aka 'RCTS'
         rcts_separators: List[str] | None = None,
         rcts_chunk_size: int | None = None,
         rcts_chunk_overlap: int | None = None,
