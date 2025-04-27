@@ -1,12 +1,9 @@
-from documentor.tests import *
+from documentor.tests import TestClass
 
 def main() -> None:
-    # test_document()
-    # test_pdf_document()
-    # test_text_document()
-    # test_vectordb_manager()
-    # test_groq_model()
-    # test_retriever()
-    # test_document_manager()
-    # test_chat_system()
-    test_chat_history()
+    tc = TestClass()
+    # print(tc.list_test_functions())
+
+    # test_chat_system: 7
+    # test_chat_history: 8
+    tc.run_test_function(8)
