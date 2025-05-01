@@ -1,3 +1,4 @@
+from typing import Callable
 from PyQt6 import uic, QtGui, QtCore, QtWidgets
 
 from documentor.ui.widgets.base_widget import BaseWidget
@@ -15,9 +16,15 @@ class UserMessageBoxWidget(BaseWidget):
         flags: QtCore.Qt.WindowType | None = None
     ) -> None:
         BaseWidget.__init__(self, parent, flags)
+
+        self._callback: Callable | None = None
         
         # initialize the UI
         self.init_ui()
+    
+    def set_send_button_callback(self, cb: Callable) -> None:
+        assert callable(cb), 'Must be a function!'
+        self._callback = cb
     
     def init_ui(self) -> None:
         self.load_ui('user-message-box-widget-ui.ui')
@@ -30,6 +37,12 @@ class UserMessageBoxWidget(BaseWidget):
             button=self.userMessageImagesBtn,
             size=(22, 22)
         )
+
+        self.userMessageSendBtn.clicked.connect(self.send_message)
+    
+    def send_message(self) -> None:
+        if self._callback:
+            self._callback(self.userMessageTextEdit.toPlainText())
     
 
 if __name__ == '__main__':

@@ -19,7 +19,7 @@
    </property>
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0" rowspan="3">
-     <widget class="HistoryWidget" name="mainWindowLeftPanel" native="true">
+     <widget class="HistoryWidget" name="historyWidget" native="true">
       <property name="minimumSize">
        <size>
         <width>250</width>
@@ -35,10 +35,10 @@
      </widget>
     </item>
     <item row="1" column="1">
-     <widget class="MessageBoxWidget" name="messageBox" native="true"/>
+     <widget class="MessageBoxWidget" name="messageView" native="true"/>
     </item>
     <item row="2" column="1">
-     <widget class="UserMessageBoxWidget" name="widget_2" native="true">
+     <widget class="UserMessageBoxWidget" name="userMessageBox" native="true">
       <property name="minimumSize">
        <size>
         <width>0</width>

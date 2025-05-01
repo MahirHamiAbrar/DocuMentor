@@ -5,11 +5,14 @@ from PyQt6.QtGui import *
 from PyQt6.QtCore import *
 from PyQt6.QtWidgets import *
 
-from documentor.ui.widgets import MessageBoxWidget
+from documentor.ui.widgets import HistoryWidget, MessageBoxWidget, UserMessageBoxWidget
 from documentor.utils import get_ui_file_path, get_ui_stylesheet_path
 
+
 class AppMainWindow(QMainWindow):
-    messageBox: MessageBoxWidget
+    historyWidget: HistoryWidget
+    messageView: MessageBoxWidget
+    userMessageBox: UserMessageBoxWidget
 
     def __init__(self) -> None:
         QMainWindow.__init__(self)
@@ -19,12 +22,11 @@ class AppMainWindow(QMainWindow):
     def init_ui(self) -> None:
         self._ui_fp = get_ui_file_path('main_window_ui.ui')
         self._ui = uic.loadUi(self._ui_fp, self)
-
-        self.messageBox.add_user_message('this is a user text')
-        self.messageBox.add_ai_message('this is an AI text')
-        self.messageBox.add_user_message('this is a user text')
-        self.messageBox.add_ai_message('this is an AI text')
-        self.messageBox.add_user_message('this is a user text')
+        
+        # set callback functions
+        self.userMessageBox.set_send_button_callback(
+            lambda text: self.messageView.add_user_message(text)
+        )
 
 
 def launch_app() -> None:

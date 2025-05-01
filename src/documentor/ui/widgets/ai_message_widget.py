@@ -1,5 +1,4 @@
 from PyQt6 import uic, QtGui, QtCore, QtWidgets
-
 from documentor.ui.widgets.base_widget import BaseWidget
 
 
@@ -21,8 +20,7 @@ class AIMessageWidget(BaseWidget):
     
     def set_text(self, text: str) -> None:
         self.textEdit.setPlainText(text)
-        self.textEdit.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
-    
+
 
 if __name__ == '__main__':
     import sys
