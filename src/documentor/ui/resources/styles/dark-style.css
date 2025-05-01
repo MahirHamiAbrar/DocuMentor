@@ -1,0 +1,113 @@
+* {
+	font: 13pt "Space Mono";
+	background-color: #111111;
+}
+
+#historyWidgetTitleLabel {
+	color: #EDFDE1;
+	background-color: #191B19;
+	border-radius: 6px;
+}
+
+#userMessageBox {
+	background-color: #101112;
+}
+
+#userMessageSendBtn {
+	margin-right: 10px;
+	padding: 10px;
+	border-radius: 6px;
+	background-color: #1D201A;
+}
+
+#userMessageImagesBtn {
+	margin-left: 10px;
+	padding: 9px;
+	border-radius: 6px;
+}
+
+.transparent_btn {
+	border: none;
+	outline: none;
+	background-color: rgba(17, 17, 17, 0);
+}
+
+QPlainTextEdit { 
+    background-color: #1D201A; border: none; border-radius: 10px; padding: 8px; 
+}
+
+QListWidget {
+    background-color: #111111;
+    border-radius: 8px;
+    outline: none;
+}
+
+QListWidget::item {
+    background-color: #101112;
+    color: #EDFFDF;
+    padding: 8px;
+    margin: 4px 4px;
+    border-radius: 6px;
+}
+
+QListWidget::item:hover {
+    background-color: #1A1B1C;
+    color: #F5FFF0;
+}
+
+QListWidget::item:selected {
+    background-color: #1D201A;
+    color: #31F354;
+}
+
+QListWidget::item:selected:hover {
+    background-color: #272A23;
+    color: #4AF769;
+}
+
+QPushButton { 
+    background-color: #1D201A; color: #31F354; padding: 8px; margin: 4px 4px; border-radius: 10px; border: none; 
+}
+
+QPushButton:hover { 
+    background-color: #272A23; color: #4AF769; 
+}
+
+QPushButton:pressed { 
+    background-color: #171A14; color: #29CC48; 
+}
+
+QPushButton:pressed:hover { 
+    background-color: #20241C; color: #3DE95B; 
+}
+
+
+
+
+QScrollBar:vertical, QScrollBar:horizontal { 
+    background-color: #111111; margin: 4px; border: none; border-radius: 5px; 
+}
+
+QScrollBar::handle:vertical, QScrollBar::handle:horizontal { 
+    background-color: #1D201A; border-radius: 3px; min-height: 20px; min-width: 20px; 
+}
+
+QScrollBar::handle:vertical:hover, QScrollBar::handle:horizontal:hover { 
+    background-color: #272A23; 
+}
+
+QScrollBar::handle:vertical:pressed, QScrollBar::handle:horizontal:pressed { 
+    background-color: #171A14; 
+}
+
+QScrollBar::handle:vertical:pressed:hover, QScrollBar::handle:horizontal:pressed:hover { 
+    background-color: #20241C; 
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical, QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal { 
+    background: none; border: none; 
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical, QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal { 
+    background: none; 
+}

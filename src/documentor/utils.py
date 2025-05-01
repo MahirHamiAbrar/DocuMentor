@@ -25,5 +25,8 @@ def get_ui_resource_path(fp: str, must_exist: bool = True) -> str:
 def get_ui_file_path(fname: str, must_exist: bool = False) -> str:
     return get_ui_resource_path(f'ui_files/{fname}', must_exist)
 
+def get_ui_stylesheet_path(fname: str, must_exist: bool = False) -> str:
+    return get_ui_resource_path(f'styles/{fname}', must_exist)
+
 def get_ui_icon_path(fname: str, must_exist: bool = False) -> str:
     return get_ui_resource_path(f'icons/{fname}', must_exist)

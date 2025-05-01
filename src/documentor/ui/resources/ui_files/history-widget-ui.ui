@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>historyWidget</class>
+ <widget class="QWidget" name="historyWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>343</width>
+    <height>448</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">* {
+	font: 13pt &quot;Space Mono&quot;;
+	background-color: #111111;
+}
+
+#historyWidgetTitleLabel {
+	color: #EDFDE1;
+	background-color: #191B19;
+	border-radius: 6px;
+}
+
+QListWidget {
+    background-color: #111111;
+    border-radius: 8px;
+    outline: none;
+}
+
+QListWidget::item {
+    background-color: #101112;
+    color: #EDFFDF;
+    padding: 8px;
+    margin: 4px 4px;
+    border-radius: 6px;
+}
+
+QListWidget::item:hover {
+    background-color: #1A1B1C;
+    color: #F5FFF0;
+}
+
+QListWidget::item:selected {
+    background-color: #1D201A;
+    color: #31F354;
+}
+
+QListWidget::item:selected:hover {
+    background-color: #272A23;
+    color: #4AF769;
+}
+
+QPushButton { background-color: #1D201A; color: #31F354; padding: 8px; margin: 4px 4px; border-radius: 10px; border: none; }
+
+QPushButton:hover { background-color: #272A23; color: #4AF769; }
+
+QPushButton:pressed { background-color: #171A14; color: #29CC48; }
+
+QPushButton:pressed:hover { background-color: #20241C; color: #3DE95B; }
+
+
+
+
+QScrollBar:vertical, QScrollBar:horizontal { background-color: #111111; margin: 4px; border: none; border-radius: 5px; }
+
+QScrollBar::handle:vertical, QScrollBar::handle:horizontal { background-color: #1D201A; border-radius: 3px; min-height: 20px; min-width: 20px; }
+
+QScrollBar::handle:vertical:hover, QScrollBar::handle:horizontal:hover { background-color: #272A23; }
+
+QScrollBar::handle:vertical:pressed, QScrollBar::handle:horizontal:pressed { background-color: #171A14; }
+
+QScrollBar::handle:vertical:pressed:hover, QScrollBar::handle:horizontal:pressed:hover { background-color: #20241C; }
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical, QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal { background: none; border: none; }
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical, QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal { background: none; }</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>6</number>
+   </property>
+   <property name="leftMargin">
+    <number>4</number>
+   </property>
+   <property name="topMargin">
+    <number>4</number>
+   </property>
+   <property name="rightMargin">
+    <number>4</number>
+   </property>
+   <property name="bottomMargin">
+    <number>4</number>
+   </property>
+   <item>
+    <widget class="QLabel" name="historyWidgetTitleLabel">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>40</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>Chat History</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QListWidget" name="historyWidgetChatList">
+     <item>
+      <property name="text">
+       <string>New Item</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>New Item</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>New Item</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="historyWidgetNewChatBtn">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>46</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>46</height>
+      </size>
+     </property>
+     <property name="text">
+      <string> New Chat</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
