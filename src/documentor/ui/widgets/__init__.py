@@ -1,2 +1,5 @@
 from .history_widget import HistoryWidget
 from .user_message_box_widget import UserMessageBoxWidget
+from .user_message_widget import UserMessageWidget
+from .ai_message_widget import AIMessageWidget
+from .message_box_widget import MessageBoxWidget

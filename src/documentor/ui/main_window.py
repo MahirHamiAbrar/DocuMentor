@@ -1,15 +1,16 @@
 import sys
 
+from PyQt6 import uic
 from PyQt6.QtGui import *
 from PyQt6.QtCore import *
 from PyQt6.QtWidgets import *
 
-from PyQt6 import uic
-
+from documentor.ui.widgets import MessageBoxWidget
 from documentor.utils import get_ui_file_path, get_ui_stylesheet_path
-# from .widgets.history_widget import HistoryWidget
 
 class AppMainWindow(QMainWindow):
+    messageBox: MessageBoxWidget
+
     def __init__(self) -> None:
         QMainWindow.__init__(self)
 
@@ -18,6 +19,12 @@ class AppMainWindow(QMainWindow):
     def init_ui(self) -> None:
         self._ui_fp = get_ui_file_path('main_window_ui.ui')
         self._ui = uic.loadUi(self._ui_fp, self)
+
+        self.messageBox.add_user_message('this is a user text')
+        self.messageBox.add_ai_message('this is an AI text')
+        self.messageBox.add_user_message('this is a user text')
+        self.messageBox.add_ai_message('this is an AI text')
+        self.messageBox.add_user_message('this is a user text')
 
 
 def launch_app() -> None:
@@ -29,6 +36,8 @@ def launch_app() -> None:
     app.setStyleSheet(stylesheet)
 
     window = AppMainWindow()
+    window.setWindowTitle('DocuMentor-Chat')
+    window.resize(1400, 720)
     window.show()
     
     sys.exit(app.exec())

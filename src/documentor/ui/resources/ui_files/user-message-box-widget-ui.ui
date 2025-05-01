@@ -20,45 +20,7 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">* {
-	font: 13pt &quot;Space Mono&quot;;
-	color: #EDFFDF;
-	background-color: #111111;
-}
-
-#userMessageBox {
-	background-color: #101112;
-}
-
-#userMessageSendBtn {
-	margin-right: 10px;
-	padding: 10px;
-	border-radius: 6px;
-	background-color: #1D201A;
-}
-
-#userMessageImagesBtn {
-	margin-left: 10px;
-	padding-left: 10px;
-	padding-right: 10px;
-	border-radius: 6px;
-}
-
-
-
-QPushButton:hover { background-color: #272A23; color: #4AF769; }
-
-QPushButton:pressed { background-color: #171A14; color: #29CC48; }
-
-QPushButton:pressed:hover { background-color: #20241C; color: #3DE95B; }
-
-.transparent_btn {
-	border: none;
-	outline: none;
-	background-color: rgba(17, 17, 17, 0);
-}
-
-QPlainTextEdit { background-color: #1D201A; border: none; border-radius: 10px; padding: 8px; }</string>
+   <string notr="true"/>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <property name="spacing">
@@ -99,6 +61,12 @@ QPlainTextEdit { background-color: #1D201A; border: none; border-radius: 10px; p
       </property>
       <item row="0" column="0" colspan="3">
        <widget class="QPlainTextEdit" name="userMessageTextEdit">
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="plainText">
+         <string/>
+        </property>
         <property name="placeholderText">
          <string>Send a message...</string>
         </property>
@@ -109,7 +77,7 @@ QPlainTextEdit { background-color: #1D201A; border: none; border-radius: 10px; p
         <property name="minimumSize">
          <size>
           <width>0</width>
-          <height>40</height>
+          <height>50</height>
          </size>
         </property>
         <property name="maximumSize">
