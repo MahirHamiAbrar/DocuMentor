@@ -19,9 +19,20 @@ class UserMessageWidget(BaseWidget):
         self.load_ui('user-message-widget-ui.ui')
         self.textEdit.setMinimumHeight(100)
     
+    def clear_text(self) -> str:
+        self.textEdit.clear()
+    
+    def current_text(self) -> str:
+        return self.textEdit.toPlainText()
+    
     def set_text(self, text: str) -> None:
         self.textEdit.setText(text)
         self.textEdit.setAlignment(QtCore.Qt.AlignmentFlag.AlignRight)
+    
+    def append_text(self, text: str) -> None:
+        self.textEdit.setText(
+            self.textEdit.toPlainText() + text
+        )
     
 
 if __name__ == '__main__':

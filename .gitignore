@@ -13,6 +13,7 @@ wheels/
 .env
 
 # other unwanted directories
+my-tests/
 output/
 **/tests/cache/
 **/tests/chromadb/

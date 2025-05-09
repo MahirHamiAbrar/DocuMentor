@@ -63,4 +63,3 @@ class ChatHistoryManager:
     
     def clear_current_chat_history(self) -> None:
         self._current_chat.clear()
-

@@ -22,15 +22,19 @@ class MessageBoxWidget(BaseWidget):
     def init_ui(self) -> None:
         self.load_ui('message-box-ui.ui')
     
-    def add_user_message(self, text: str) -> None:
-        msg = UserMessageWidget(self)
-        msg.set_text(text)
-        self.msgScrollVerticalLayout.addWidget(msg)
+    def add_user_message(self, text: str) -> UserMessageWidget:
+        msg_widget = UserMessageWidget(self)
+        msg_widget.set_text(text)
+        self.msgScrollVerticalLayout.addWidget(msg_widget)
+
+        return msg_widget
     
-    def add_ai_message(self, text: str) -> None:
-        msg = AIMessageWidget(self)
-        msg.set_text(text)
-        self.msgScrollVerticalLayout.addWidget(msg)
+    def add_ai_message(self, text: str) -> AIMessageWidget:
+        msg_widget = AIMessageWidget(self)
+        msg_widget.set_text(text)
+        self.msgScrollVerticalLayout.addWidget(msg_widget)
+
+        return msg_widget
     
 
 if __name__ == '__main__':

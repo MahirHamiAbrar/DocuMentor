@@ -4,6 +4,8 @@ from typing import List, Callable
 from loguru import logger
 from dotenv import load_dotenv
 
+from ..chat.data_models import ChatMessage
+
 from groq import Groq
 from groq.types import Model
 from groq.resources.chat.completions import ChatCompletion
@@ -56,17 +58,26 @@ class GroqModel:
                 return True
         return False
     
-    def create_system_message(self, msg: str) -> dict[str, str]:
-        return { 'role': 'system', 'content': msg }
+    def create_system_message(self, msg: str) -> ChatMessage:
+        return ChatMessage(
+            role = 'system',
+            content = msg
+        )
     
-    def create_user_message(self, msg: str) -> dict[str, str]:
-        return { 'role': 'user', 'content': msg }
+    def create_user_message(self, msg: str) -> ChatMessage:
+        return ChatMessage(
+            role = 'user',
+            content = msg
+        )
     
-    def create_assistant_message(self, msg: str) -> dict[str, str]:
-        return { 'role': 'assistant', 'content': msg }
+    def create_assistant_message(self, msg: str) -> ChatMessage:
+        return ChatMessage(
+            role = 'assistant',
+            content = msg
+        )
     
     def generate_response(self,
-        messages: List[dict[str, str]],
+        messages: List[ChatMessage],
         stream: bool = False
     ) -> str:
         response: ChatCompletion = self._client.chat.completions.create(
