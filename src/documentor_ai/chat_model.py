@@ -42,6 +42,9 @@ class ChatModel:
         assert self.is_valid_model(name), 'Invalid Model!'
         self._model_name = name
     
+    def client(self) -> OpenAI:
+        return self._client
+    
     def get_model_list(
         self, 
         return_type: Optional[Literal['id', 'json']] = None
@@ -98,10 +101,18 @@ class ChatModel:
 if __name__ == '__main__':
     from documentor_ai.messages import ChatMessages
     
-    cm = ChatModel(backend='nvidia-nim')
+    cm = ChatModel(backend='groq')
     # print(cm.get_model_list('json'))
 
     cms = ChatMessages()
     cms.add_user_message('What do you mean by Paraphrasing?')
 
-    print(cm.generate_response(messages=cms.messages()))
+    # print(cm.generate_response(messages=cms.messages()))
+    
+    resp = cm.client().chat.completions.create(
+        messages=cms.messages(),
+        model=cm.model_name
+    )
+
+
+    print(resp.choices[0].message.content)

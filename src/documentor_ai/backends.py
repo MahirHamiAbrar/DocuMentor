@@ -1,7 +1,7 @@
 import os
 from types import MappingProxyType
 from typing import Tuple, Literal, Optional, Dict, Union
-from pydantic import BaseModel, HttpUrl, Field
+from pydantic import BaseModel
 
 
 class BackendInfo(BaseModel):
