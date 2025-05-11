@@ -12,7 +12,6 @@ from documentor_ai.backends import (
     get_available_backends,
 )
 from documentor_ai._types import Messages
-from documentor_ai.messages import ChatMessages
 
 
 class ChatModel:
@@ -32,7 +31,11 @@ class ChatModel:
     
     @property
     def model_name(self) -> str:
-        return self._model_name
+        return (
+            self._model_name
+            if self._model_name
+            else self._backend_info.default_model_name
+        )
     
     @model_name.setter
     def model_name(self, name: str) -> None:
@@ -72,14 +75,10 @@ class ChatModel:
     def generate_response(self,
         messages: Messages,
         stream: bool = False,
-        model: Optional[str] = None
     ) -> str:
         response: ChatCompletion = self._client.chat.completions.create(
             messages=messages,
-            model=(
-                model if model
-                else self._backend_info.default_model_name
-            ),
+            model=self.model_name,
             stream=stream
         )
 
@@ -97,6 +96,8 @@ class ChatModel:
 
 
 if __name__ == '__main__':
+    from documentor_ai.messages import ChatMessages
+    
     cm = ChatModel(backend='nvidia-nim')
     # print(cm.get_model_list('json'))
 
